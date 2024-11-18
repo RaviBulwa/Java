@@ -1,0 +1,105 @@
+// Wartosc bezwgledna
+ROZKAZ ABS;
+czyt wys wei il;
+wyad wea;
+czyt wys weja przep weak;
+JEŻELi Z TO @ujemna GDY NIE @nieujemna;
+@ujemna wys weja ode weak;
+wys weja ode weak wyl wea KONIEC;
+@nieujemna wyl wea;
+
+//nastepny adres
+ROZKAZ SNZ;
+czyt wys wei il;
+JEŻELI ZAK TO @jest_zerem GDY NIE @nie_jest_zerem;
+@jest_zerem wyl wea KONIEC;
+@nie_jest_zerem wyad wel wea;
+
+//dekrementacja akumulatora bez uzycia argumentow
+ROZKAZ DEAK;
+ARGUMENTY 0;
+czyt wys wei il;
+wyl as weja wes dod weak il;
+wyl as weja ode weak;
+wys sa wel wea;
+
+// Dodaje zawartosc komorki, ktrj adres znajduje sie w komorce zaadresowanej przez argument
+ROZKAZ DDP;
+czyt wys wei il;
+wyad wea czyt;
+wys sa wea czyt;
+wys sa wea czyt;
+wys weja dod weak wyl wea;
+
+// Odejmuje zawartosc komorki, ktrj adres znajduje sie w komorce zaadresowanej przez argument
+ROZKAZ ODP;
+czyt wys wei il;
+wyad wea czyt;
+wys sa wea czyt;
+wys sa wea czyt;
+wys weja ode weak wyl wea;
+
+// Przepisuje, ale robi troszkem niebezpiecznie?;
+ROZKAZ PBB;
+czyt wys wei il;
+wyad wea;
+czyt wys sa wea;
+czyt wys weja przep weak wyl wea;
+
+
+// Przepisuje, mniej niebezpiecznie;
+ROZKAZ PBB;
+czyt wys wei il;
+wyad wea;
+czyt;
+wys sa wea;
+czyt wys weja przep weak;
+wyl wea;
+
+// Ładowania przez kilka adresów
+ROZKAZ ŁDP;
+czyt wys wei il;
+wyad wea;
+czyt wys sa wea;
+wyak wes;
+ pisz wyl wea;
+
+// zamiana dwoch komorek
+ROZKAZ KROKIET;
+czyt wys wei il;
+wyad wea;
+czyt wys weja przep weak;
+wyl wea;
+czyt;
+wyad wea;
+pisz;
+wyak wes wyl wea;
+pisz;
+il;
+wyl wea;
+
+//---------------------------------------
+
+ROZKAZ MIN;
+czyt wys wei il;
+wyad wea;
+czyt wys weja ode weak;
+JEZELI Z TO @ak_m GDY NIE @ad_m;
+@ak_m czyt wys weja dod weak wyl wea KONIEC;
+@ad_m czyt wys weja przep weak;
+wyl wea; 
+
+ROZKAZ MAX;
+czyt wys wei il;
+wyad wea;
+czyt wys weja ode weak;
+JEZELI Z TO @ak_w GDY NIE @ad_w;
+@ad_w wys weja dod weak wyl wea KONIEC;
+@ak_w wys weja przep weak;
+wyl wea;
+
+ROZKAZ MN2;
+czyt wys wei il;
+wyad wea czyt wys weja przep weak;
+wys weja dod weak;
+wyl wea;
