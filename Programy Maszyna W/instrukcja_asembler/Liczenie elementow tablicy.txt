@@ -1,0 +1,19 @@
+//Liczenie elementow tablicy
+Petla: POB Tab
+SOM Koniec
+POB n
+DOD Jedynka
+ŁAD n
+POB Petla
+DOD Jedynka
+ŁAD Petla
+SOB Petla
+Koniec: POB n
+STP
+Tab: RST 10
+     RST 20
+     RST 50
+     RST 40
+     RST -1
+n: RST 0
+Jedynka: RST 1

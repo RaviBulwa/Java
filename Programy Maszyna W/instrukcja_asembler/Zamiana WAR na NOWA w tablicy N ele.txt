@@ -1,0 +1,31 @@
+//Zamiana WAR na NOWA w tablicy N elementowej
+Petla: POB n
+ODE Jedynka
+SOM Koniec
+ŁAD n
+Rozkaz1: POB T
+ODE WAR
+SOZ zero
+SOB kontynuuj
+zero:
+POB NOWA
+Rozkaz2: ŁAD T
+kontynuuj:
+POB Rozkaz1
+DOD Jedynka
+ŁAD Rozkaz1
+POB Rozkaz2
+DOD Jedynka
+ŁAD Rozkaz2
+SOB Petla 
+Koniec: STP
+T: RST 10
+   RST 45
+   RST 10
+   RST 56
+   RST 14
+   RST 10
+n: RST 6
+WAR: RST 10
+NOWA: RST 19
+Jedynka: RST 1

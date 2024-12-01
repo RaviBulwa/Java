@@ -1,0 +1,10 @@
+//Reszta z dzielenia
+POB A
+Petla: ODE B
+SOM Koniec
+ŁAD A
+SOB Petla
+Koniec: POB A
+STP
+A: RST 10
+B: RST 67

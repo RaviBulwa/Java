@@ -1,0 +1,23 @@
+//NWW
+POB A
+ŁAD PoczatkowaA
+POB B
+ŁAD PoczatkowaB
+Petla: POB A
+ODE B
+SOZ Koniec
+SOM Ujemna
+POB B
+DOD PoczatkowaB
+ŁAD B
+SOB Petla
+Ujemna: POB A
+DOD PoczatkowaA
+ŁAD A
+Sob Petla
+Koniec: POB A
+STP
+A: RST 3
+B: RST 2
+PoczatkowaA: RPA
+PoczatkowaB: RPA

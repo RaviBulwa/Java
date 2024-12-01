@@ -1,0 +1,29 @@
+//podwajanie ujemnych elementów tablicy zakończonej wartoscia A
+Petla: POB TAB
+ODE A
+SOZ Koniec
+DOD A
+SOM ujemna
+SOB Kontynuuj
+ujemna:
+Rozkaz1: DOD TAB
+Rozkaz2: ŁAD TAB
+Kontynuuj: POB Petla
+DOD Jedynka
+ŁAD Petla
+POB Rozkaz1
+DOD Jedynka
+ŁAD Rozkaz1
+POB Rozkaz2
+DOD Jedynka
+ŁAD Rozkaz2
+SOB Petla
+Koniec: STP
+TAB: RST 10
+     RST -5
+     RST -12
+     RST 14
+     RST 6
+     RST 30
+A:   RST 30
+Jedynka: RST 1

@@ -1,0 +1,32 @@
+// Suma kwadratów elementów tablicy zakończona wartoscia A
+petla: POB T
+ODE A
+SOZ Koniec
+DOD A
+ŁAD Temp
+Mnozenie: POB Temp
+SOZ Kontynuuj
+ODE Mirjedynka
+ŁAD Temp
+POB Suma
+Rozkaz1: DOD T
+ŁAD Suma
+SOB Mnozenie
+Kontynuuj: POB Petla
+DOD Mirjedynka
+ŁAD Petla
+POB Rozkaz1
+DOD Mirjedynka
+ŁAD Rozkaz1
+SOB Petla
+Koniec: POB Suma
+STP
+T: RST 3
+   RST 4
+   RST 6
+   RST 2
+   RST 10
+A: RST 10
+Suma: RST 0
+Mirjedynka: RST 1
+Temp: RPA

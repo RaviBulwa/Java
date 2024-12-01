@@ -1,0 +1,31 @@
+//Szukanie wzorca w tablicy
+Petla: POB n
+SOZ Koniec
+ODE Jedynka
+ŁAD n
+Rozkaz: POB Tab
+ODE Wzorzec
+SOZ zero
+POB Rozkaz
+DOD Jedynka
+ŁAD Rozkaz
+SOB Petla
+zero:
+POB Wynik
+DOD Jedynka
+ŁAD Wynik
+POB Rozkaz
+DOD Jedynka
+ŁAD Rozkaz
+SOB Petla
+Koniec: POB Wynik
+STP
+Tab: RST 4
+     RST 7
+     RST 10
+     RST 4
+     RST 99
+n:   RST 5
+Wzorzec: RST 4
+Wynik: RST 0
+Jedynka: RST 1

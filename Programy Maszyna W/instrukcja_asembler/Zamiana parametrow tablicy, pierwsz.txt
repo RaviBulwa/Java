@@ -1,0 +1,44 @@
+//Zamiana parametrow tablicy, pierwszy z ostatnim
+POB Rozkaz2
+DOD n
+ODE Jedynka
+ŁAD Rozkaz2
+POB Rozkaz4
+DOD n
+ODE Jedynka
+ŁAD Rozkaz4
+Petla: POB n
+SOZ Koniec
+SOM Koniec //gdy bedzie nieparzysta, to po odejmowaniu wyjdzie -1
+ODE Jedynka
+ODE Jedynka
+ŁAD n
+Rozkaz1: POB Tab
+ŁAD Temp
+Rozkaz2: POB Tab // ostatni element
+Rozkaz3: ŁAD Tab
+POB Temp
+Rozkaz4: ŁAD Tab // ostatni element
+POB Rozkaz1
+DOD Jedynka
+ŁAD Rozkaz1
+POB Rozkaz3
+DOD Jedynka
+ŁAD Rozkaz3 
+POB Rozkaz2
+ODE Jedynka
+ŁAD Rozkaz2
+POB Rozkaz4
+ODE Jedynka
+ŁAD Rozkaz4
+SOB Petla
+Koniec: STP
+Tab: RST 10
+     RST 20
+     RST 30
+     RST 40
+     RST 50
+     RST 60
+n:   RST 6
+Jedynka: RST 1
+Temp: RPA

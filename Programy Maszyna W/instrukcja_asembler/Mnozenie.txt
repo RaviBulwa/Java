@@ -1,0 +1,15 @@
+//Mnozenie
+Petla: POB A
+SOZ Koniec
+ODE Jedynka
+ŁAD A
+POB Iloczyn
+DOD B
+ŁAD Iloczyn
+SOB Petla
+Koniec: POB Iloczyn
+STP
+A: RST 9
+B: RST 12
+Iloczyn: RST 0
+Jedynka: RST 1

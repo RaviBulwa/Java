@@ -1,0 +1,19 @@
+//Inkrementacja elementow tablicy zakonczona wartoscia -1
+Petla: POB T
+DOD Jedynka
+SOZ Koniec
+Rozkaz2: ŁAD T
+POB Petla
+DOD Jedynka
+ŁAD Petla
+POB Rozkaz2
+DOD Jedynka
+ŁAD Rozkaz2
+SOB Petla
+Koniec: STP
+T: RST 10
+   RST 20
+   RST 45
+   RST 7
+   RST -1
+Jedynka: RST 1

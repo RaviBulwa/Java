@@ -1,0 +1,15 @@
+//NWD
+Petla: POB A
+ODE B
+SOZ Koniec
+SOM ujemna
+ŁAD A
+SOB Petla
+ujemna: POB B
+ODE A
+ŁAD B
+SOB Petla
+Koniec: POB A
+STP
+A: RST 24
+B: RST 18

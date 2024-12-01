@@ -1,0 +1,41 @@
+//Zamiana parami elementow tablicy
+POB Rozkaz2
+DOD Jedynka
+ŁAD Rozkaz2
+POB Rozkaz4
+DOD Jedynka
+ŁAD Rozkaz4
+Petla: POB n
+SOZ Koniec
+ODE Dwojka 
+ŁAD n
+Rozkaz1: POB Tab
+Ład Temp
+Rozkaz2: POB Tab //ale do kolejnego
+Rozkaz3: ŁAD Tab
+POB Temp
+Rozkaz4: ŁAD Tab //ale do kolejnego
+POB Rozkaz1
+DOD Dwojka
+ŁAD Rozkaz1
+POB Rozkaz2
+DOD Dwojka
+ŁAD Rozkaz2
+POB Rozkaz3
+DOD Dwojka
+ŁAD Rozkaz3
+POB Rozkaz4
+DOD Dwojka
+ŁAD Rozkaz4
+SOB Petla
+Koniec: STP
+n:   RST 6
+Tab: RST 1
+     RST 2
+     RST 3
+     RST 4
+     RST 5 
+     RST 6   
+Jedynka: RST 1
+Dwojka: RST 2
+Temp: RPA

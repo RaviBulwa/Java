@@ -1,0 +1,25 @@
+//Szukanie Maxa
+POB Tab
+ŁAD Max
+Petla: POB n
+ODE Jedynka
+SOZ Koniec
+ŁAD n
+POB Rozkaz1
+DOD Jedynka
+ŁAD Rozkaz1
+ŁAD Rozkaz2
+Rozkaz1: POB Tab
+ODE Max
+SOM Ujemna
+Rozkaz2: POB Tab
+ŁAD Max
+Ujemna: SOB Petla
+Koniec: STP
+Tab: RST 10
+     RST 15
+     RST 4
+     RST 60
+n:   RST 4
+Max: RPA
+Jedynka: RST 1
