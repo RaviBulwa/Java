@@ -1,0 +1,90 @@
+
+#10. Zrealizować zestawienie średnich, minimalnych i maksymalnych zarobków pracowników w
+#poszczególnych zespołach. Uwaga! Zestawienie zrealizować w dwóch krokach:  w pierwszym
+#utworzyć perspektywę (widok) o postaci: nrz nazwa_zesp nr_prac nazwisko suma_zarobków_prac
+#uwzględnić również fakt, że pracownik mógł nie dostać żadnej wypłaty,  utworzoną perspektywę
+#wykorzystać w zadaniu. 
+
+CREATE OR REPLACE VIEW ZAROBKI_ZESTAWIENIE AS
+SELECT PRACOWNICY.NR_ZESP,PRACOWNICY.NR_PRAC, ZESPOLY.NAZWA_ZESP, SUM(WYPLATY.KWOTA) as SUMA  
+FROM PRACOWNICY 
+LEFT JOIN WYPLATY ON PRACOWNICY.NR_PRAC = WYPLATY.NR_PRAC
+JOIN ZESPOLY ON ZESPOLY.NR_ZESP = PRACOWNICY.NR_ZESP
+GROUP BY PRACOWNICY.NR_ZESP,PRACOWNICY.NR_PRAC, ZESPOLY.NAZWA_ZESP
+ORDER BY PRACOWNICY.NR_PRAC ASC
+
+CREATE OR REPLACE VIEW ZESTAWIENIE_MINMAX AS
+SELECT ZAROBKI_ZESTAWIENIE.NAZWA_ZESP, AVG(ZAROBKI_ZESTAWIENIE.SUMA),MIN(ZAROBKI_ZESTAWIENIE.SUMA),MAX(ZAROBKI_ZESTAWIENIE.SUMA)
+FROM ZAROBKI_ZESTAWIENIE
+GROUP BY ZAROBKI_ZESTAWIENIE.NR_ZESP,ZAROBKI_ZESTAWIENIE.NAZWA_ZESP;
+
+SELECT *
+FROM ZESTAWIENIE_MINMAX;
+
+#11. Podaj nazwiska pracowników, którzy zostali przydzieleni do tematu, lecz nie otrzymali w tym
+#temacie ani jednej wypłaty. 
+
+SELECT DISTINCT PRACOWNICY.NAZWISKO
+FROM PRACOWNICY
+JOIN PRZYDZIALY ON PRACOWNICY.NR_PRAC = PRZYDZIALY.NR_PRAC
+LEFT JOIN WYPLATY ON PRACOWNICY.NR_PRAC = WYPLATY.NR_PRAC AND PRZYDZIALY.NR_TEM = WYPLATY.NR_TEM
+WHERE WYPLATY.NR_PRAC IS NULL
+
+#12. Sprawdzić poprawność przydziału kierowników do tematu (jest to niezależnie określone za
+#pomocą klucza obcego nr_prac_kt w tabeli TEMATY oraz przez zapis w tabeli PRZYDZIAŁY – należy
+#sprawdzić czy oba te zapisy sobie odpowiadają).
+
+SELECT  NR_PRAC_KT, NR_TEM
+FROM TEMATY
+WHERE (NR_TEM,NR_PRAC_KT) NOT IN (
+SELECT NR_TEM, NR_PRAC
+FROM PRZYDZIALY
+WHERE (NR_TEM,NR_PRAC) IN
+(SELECT NR_TEM, NR_PRAC_KT
+FROM TEMATY)
+ORDER BY NR_TEM)
+
+# 13. Podaj numery i nazwiska pracowników nie biorących udziału w żadnym z tematów, w którym
+#pracuje pracownik NIEZALEZNY. 
+
+SELECT 
+    PRACOWNICY.NR_PRAC,
+    PRACOWNICY.NAZWISKO
+FROM PRACOWNICY
+WHERE PRACOWNICY.NR_PRAC NOT IN (
+
+    SELECT PRZYDZIALY.NR_PRAC
+    FROM PRZYDZIALY
+    WHERE PRZYDZIALY.NR_TEM IN (
+
+        SELECT PRZYDZIALY.NR_TEM
+        FROM PRZYDZIALY
+        JOIN PRACOWNICY 
+            ON PRZYDZIALY.NR_PRAC = PRACOWNICY.NR_PRAC
+        WHERE PRACOWNICY.NAZWISKO = 'NIEZALEZNY'
+
+    )
+);
+
+#14. Podaj nazwiska pracowników którzy realizowali wszystkie tematy, których kierownikiem jest
+#JASKOLA. (tabela PRZYDZIAŁY!)
+
+SELECT PRACOWNICY.NAZWISKO
+FROM PRACOWNICY
+WHERE NOT EXISTS (
+
+    SELECT TEMATY.NR_TEM
+    FROM TEMATY
+    JOIN PRACOWNICY PRACOWNICY_KIEROWNICY
+        ON TEMATY.NR_PRAC_KT = PRACOWNICY_KIEROWNICY.NR_PRAC
+    WHERE PRACOWNICY_KIEROWNICY.NAZWISKO = 'JASKOLA'
+
+      AND NOT EXISTS (
+          SELECT PRZYDZIALY.NR_TEM
+          FROM PRZYDZIALY
+          WHERE PRZYDZIALY.NR_PRAC = PRACOWNICY.NR_PRAC
+            AND PRZYDZIALY.NR_TEM = TEMATY.NR_TEM
+      )
+);
+
+
